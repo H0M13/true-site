@@ -1,21 +1,33 @@
-/* eslint-disable jsx-a11y/accessible-emoji */
-
-import React, { useState } from "react";
+import React, { useState }  from "react";
+import { createStructuredSelector } from 'reselect';
+import { compose } from "redux";
+import { connect } from "react-redux";
+import { getInjectedProvider, getLocalProvider, getMainnetProvider, getTargetNetwork } from '../../utils/duck'
+import { useUserProvider, useTokenList, useBalance, useExchangePrice } from "../../hooks";
+import { useUserAddress } from "eth-hooks";
 import { formatEther } from "@ethersproject/units";
-import { Address, AddressInput } from "../components";
+import { Address, AddressInput } from "../../components";
 import { Select } from "antd";
-import { useTokenList } from "../hooks";
 
 const { Option } = Select;
 
-export default function Hints({yourLocalBalance, mainnetProvider, price, address }) {
 
-  // Get a list of tokens from a tokenlist -> see tokenlists.org!
-  const [selectedToken, setSelectedToken] = useState("Pick a token!");
+const HintsView = ({
+	localProvider,
+	injectedProvider,
+	mainnetProvider,
+	targetNetwork
+}) => {
+	const userProvider = useUserProvider(injectedProvider, localProvider);
+	const address = useUserAddress(userProvider);
+	const yourLocalBalance = useBalance(localProvider, address);
+	const price = useExchangePrice(targetNetwork, mainnetProvider);
+
+	const [selectedToken, setSelectedToken] = useState("Pick a token!");
   let listOfTokens = useTokenList("https://raw.githubusercontent.com/SetProtocol/uniswap-tokenlist/main/set.tokenlist.json")
 
   return (
-    <div>
+		<div>
       <div style={{ margin: 32 }}>
         <span style={{ marginRight: 8 }}>👷</span>
         Edit your <b>contract</b> in
@@ -191,5 +203,21 @@ export default function Hints({yourLocalBalance, mainnetProvider, price, address
         🛠 Check out your browser's developer console for more... (inpect -> console) 🚀
       </div>
     </div>
-  );
+	);
 }
+
+const mapDispatchToProps = {
+};
+
+const mapStateToProps = createStructuredSelector({
+	localProvider: getLocalProvider,
+	injectedProvider: getInjectedProvider,
+	targetNetwork: getTargetNetwork,
+	mainnetProvider: getMainnetProvider,
+});
+
+const hocChain = compose(
+	connect(mapStateToProps, mapDispatchToProps),
+);
+
+export default hocChain(HintsView);

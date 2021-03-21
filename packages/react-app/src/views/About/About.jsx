@@ -2,22 +2,15 @@ import React from "react";
 import { createStructuredSelector } from 'reselect';
 import { compose } from "redux";
 import { connect } from "react-redux";
-import { PageHeader } from "antd";
-import { injectIntl } from 'react-intl'
+import { } from '../../utils/duck'
 
-const Header = ({
-	intl: {
-		messages: {
-			projectTitle,
-			projectSubTitle,
-		}
-	},
+
+const About = ({
 }) => {
   return (
-		<PageHeader
-			title={projectTitle}
-			subTitle={projectSubTitle}
-		/>
+		<div>
+			About Placeholder
+		</div>
 	);
 }
 
@@ -28,8 +21,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const hocChain = compose(
-	injectIntl,
 	connect(mapStateToProps, mapDispatchToProps),
 );
 
-export default hocChain(Header);
+export default hocChain(About);

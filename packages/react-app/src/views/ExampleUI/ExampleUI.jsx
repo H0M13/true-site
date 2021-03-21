@@ -1,17 +1,37 @@
-/* eslint-disable jsx-a11y/accessible-emoji */
-
 import React, { useState } from "react";
+import { createStructuredSelector } from 'reselect';
+import { compose } from "redux";
+import { connect } from "react-redux";
+import { getInjectedProvider, getLocalProvider, getMainnetProvider, getTargetNetwork } from '../../utils/duck'
+import { useUserProvider, useContractReader, useContractLoader, useGasPrice, useBalance, useExchangePrice, useEventListener } from "../../hooks";
+import { useUserAddress } from "eth-hooks";
 import { Button, List, Divider, Input, Card, DatePicker, Slider, Switch, Progress, Spin } from "antd";
 import { SyncOutlined } from '@ant-design/icons';
-import { Address, Balance } from "../components";
+import { Address, Balance } from "../../components";
 import { parseEther, formatEther } from "@ethersproject/units";
+import { Transactor } from "../../helpers";
 
-export default function ExampleUI({purpose, setPurposeEvents, address, mainnetProvider, userProvider, localProvider, yourLocalBalance, price, tx, readContracts, writeContracts }) {
+const ExampleUI = ({
+	localProvider,
+	injectedProvider,
+	targetNetwork,
+	mainnetProvider,
+}) => {
+	const readContracts = useContractLoader(localProvider);
+	const purpose = useContractReader(readContracts,"YourContract", "purpose")
+	const userProvider = useUserProvider(injectedProvider, localProvider);
+	const address = useUserAddress(userProvider);
+	const gasPrice = useGasPrice(targetNetwork,"fast");
+	const tx = Transactor(userProvider, gasPrice);
+	const writeContracts = useContractLoader(userProvider);
+	const yourLocalBalance = useBalance(localProvider, address);
+	const price = useExchangePrice(targetNetwork, mainnetProvider);
+	const setPurposeEvents = useEventListener(readContracts, "YourContract", "SetPurpose", localProvider, 1);
 
-  const [newPurpose, setNewPurpose] = useState("loading...");
+	const [newPurpose, setNewPurpose] = useState("loading...");
 
   return (
-    <div>
+		<div>
       {/*
         ⚙️ Here is an example UI that displays and sets the purpose in your smart contract:
       */}
@@ -162,17 +182,13 @@ export default function ExampleUI({purpose, setPurposeEvents, address, mainnetPr
         />
       </div>
 
-
       <div style={{ width:600, margin: "auto", marginTop:32, paddingBottom:256 }}>
 
         <Card>
-
           Check out all the <a href="https://github.com/austintgriffith/scaffold-eth/tree/master/packages/react-app/src/components" target="_blank" rel="noopener noreferrer">📦  components</a>
-
         </Card>
 
         <Card style={{marginTop:32}}>
-
           <div>
             There are tons of generic components included from <a href="https://ant.design/components/overview/" target="_blank" rel="noopener noreferrer">🐜  ant.design</a> too!
           </div>
@@ -209,16 +225,24 @@ export default function ExampleUI({purpose, setPurposeEvents, address, mainnetPr
           <div style={{marginTop:32}}>
             <Spin />
           </div>
-
-
         </Card>
-
-
-
-
       </div>
-
-
     </div>
   );
 }
+
+const mapDispatchToProps = {
+};
+
+const mapStateToProps = createStructuredSelector({
+	localProvider: getLocalProvider,
+	injectedProvider: getInjectedProvider,
+	targetNetwork: getTargetNetwork,
+	mainnetProvider: getMainnetProvider,
+});
+
+const hocChain = compose(
+	connect(mapStateToProps, mapDispatchToProps),
+);
+
+export default hocChain(ExampleUI);
