@@ -1,23 +1,20 @@
 pragma solidity >=0.6.0 <0.9.0;
 //SPDX-License-Identifier: MIT
-
+pragma experimental ABIEncoderV2;
 import "hardhat/console.sol";
 //import "@openzeppelin/contracts/access/Ownable.sol"; //https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol
 
 contract YourContract {
 
-  event SetPurpose(address sender, string purpose);
-
-  string public purpose = "Building Unstoppable Apps";
+  string[] public images;
+  mapping (string => bytes32) public moderationLabels;
 
   constructor() {
-    // what should we do on deploy?
+    images.push("QmdT7hKV1EfuaXSAYa65KUZWJnxF96yRPZNS9WeG8gUsR2");
+    moderationLabels["QmdT7hKV1EfuaXSAYa65KUZWJnxF96yRPZNS9WeG8gUsR2"] = "";
   }
 
-  function setPurpose(string memory newPurpose) public {
-    purpose = newPurpose;
-    console.log(msg.sender,"set purpose to",purpose);
-    emit SetPurpose(msg.sender, purpose);
+  function getImages() public view returns (string[] memory) {
+    return images;
   }
-
 }
