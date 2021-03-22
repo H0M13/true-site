@@ -1,6 +1,6 @@
 import { Map } from 'immutable'
 import { JsonRpcProvider } from "@ethersproject/providers";
-import { NETWORKS, INFURA_ID } from "../constants";
+import { NETWORKS, INFURA_ID } from "./constants";
 
 const network = 'localhost';
 

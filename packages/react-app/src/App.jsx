@@ -9,7 +9,7 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 import { useUserAddress } from "eth-hooks";
 import { useExchangePrice, useGasPrice, useUserProvider, useBalance } from "./hooks";
 import { Header, Account, Faucet, Ramp, GasGauge, ThemeSwitch } from "./components";
-import { Transactor } from "./helpers";
+import Transactor from "./utils/Transactor";
 import { formatEther, parseEther } from "@ethersproject/units";
 
 import { IntlProvider } from 'react-intl'
@@ -20,7 +20,7 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 import { getLocale, setLocale, getLocalProvider, setInjectedProvider, getTargetNetwork, getMainnetProvider } from './utils/duck'
 
-import { INFURA_ID, NETWORK, NETWORKS } from "./constants";
+import { INFURA_ID, NETWORK, NETWORKS } from "./utils/constants";
 
 import Menu from './views/Menu/Menu.jsx'
 import Routes from './views/Routes'

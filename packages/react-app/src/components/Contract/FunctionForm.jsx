@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { BigNumber } from "@ethersproject/bignumber";
 import { hexlify } from "@ethersproject/bytes";
 import { Row, Col, Input, Divider, Tooltip, Button } from "antd";
-import { Transactor } from "../../helpers";
+import Transactor from "../../utils/Transactor";
 import tryToDisplay from "./utils";
 import Blockies from "react-blockies";
 const { utils } = require("ethers");

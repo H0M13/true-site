@@ -3,7 +3,7 @@ import { Input, Button, Tooltip } from "antd";
 import Blockies from "react-blockies";
 import { SendOutlined } from "@ant-design/icons";
 import { parseEther } from "@ethersproject/units";
-import { Transactor } from "../helpers";
+import Transactor from "../utils/Transactor";
 import Wallet from "./Wallet";
 import { useLookupAddress } from "eth-hooks";
 
