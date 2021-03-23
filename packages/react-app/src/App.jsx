@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import "antd/dist/antd.css";
 import {  Web3Provider } from "@ethersproject/providers";
-import "./App.css";
 import { Row, Col, Button, Alert } from "antd";
 import Web3Modal from "web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider";
@@ -24,6 +23,8 @@ import { INFURA_ID, NETWORK, NETWORKS } from "./utils/constants";
 
 import Menu from './views/Menu/Menu.jsx'
 import Routes from './views/Routes'
+
+import "./App.scss";
 
 const App = ({
 	targetNetwork,
@@ -126,9 +127,12 @@ const App = ({
 		<IntlProvider messages={getLabels(locale)} locale={locale} defaultLocale="en-GB">
 			<div className="App">
 				<Header />
-				{networkDisplay}
 				<Menu/>
-				<Routes />
+				
+				<div className="content">
+					<Routes />
+				</div>
+
 				<ThemeSwitch />
 
 				{/* 👨‍💼 Your account is in the top right with a wallet at connect options */}

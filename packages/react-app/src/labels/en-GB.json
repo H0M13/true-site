@@ -1,4 +1,10 @@
 {
 	"projectTitle": "🛡️ True Site",
-	"projectSubTitle": "Image moderation on the Blockchain"
+	"projectSubTitle": "Image moderation on the Blockchain",
+
+	"upload": {
+		"uploadTitle": "🖼️ Upload Image",
+		"uploadSelect": "Select Image (Max: 1)",
+		"submit": "Submit"
+	}
 }

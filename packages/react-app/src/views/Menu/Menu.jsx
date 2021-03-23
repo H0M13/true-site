@@ -17,7 +17,7 @@ const Menu = ({
 			<MenuAnt.Item key="/upload">
 				<Link onClick={()=>{setRoute("/upload")}} to="/upload">Upload</Link>
 			</MenuAnt.Item>
-			<MenuAnt.Item key="/about">
+			{/* <MenuAnt.Item key="/about">
 				<Link onClick={()=>{setRoute("/about")}} to="/about">About</Link>
 			</MenuAnt.Item>
 			<MenuAnt.Item key="/">
@@ -28,7 +28,7 @@ const Menu = ({
 			</MenuAnt.Item>
 			<MenuAnt.Item key="/exampleui">
 				<Link onClick={()=>{setRoute("/exampleui")}} to="/exampleui">ExampleUI</Link>
-			</MenuAnt.Item>
+			</MenuAnt.Item> */}
 		</MenuAnt>
 	);
 }
