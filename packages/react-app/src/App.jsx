@@ -7,7 +7,7 @@ import Web3Modal from "web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import { useUserAddress } from "eth-hooks";
 import { useExchangePrice, useGasPrice, useUserProvider, useBalance } from "./hooks";
-import { Header, Account, Faucet, Ramp, GasGauge, ThemeSwitch } from "./components";
+import { Header, Account, Faucet, Ramp, GasGauge } from "./components";
 import Transactor from "./utils/Transactor";
 import { formatEther, parseEther } from "@ethersproject/units";
 
@@ -35,31 +35,15 @@ const App = ({
 	localProvider,
 	mainnetProvider
 }) => {
-
 	const blockExplorer = targetNetwork.blockExplorer;
-
-  /* 💵 This hook will get the price of ETH from 🦄 Uniswap: */
   const price = useExchangePrice(targetNetwork,mainnetProvider);
-
-  /* 🔥 This hook will get the price of Gas from ⛽️ EtherGasStation */
   const gasPrice = useGasPrice(targetNetwork,"fast");
-  // Use your injected provider from 🦊 Metamask or if you don't have it then instantly generate a 🔥 burner wallet.
   const userProvider = useUserProvider(injectedProvider, localProvider);
   const address = useUserAddress(userProvider);
-
-  // You can warn the user if you would like them to be on a specific network
   let localChainId = localProvider && localProvider._network && localProvider._network.chainId
-
   let selectedChainId = userProvider && userProvider._network && userProvider._network.chainId
-  // For more hooks, check out 🔗eth-hooks at: https://www.npmjs.com/package/eth-hooks
-
-
-  // Faucet Tx can be used to send funds from the faucet
   const faucetTx = Transactor(localProvider, gasPrice)
-
-  // 🏗 scaffold-eth is full of handy hooks like this one to get your balance:
   const yourLocalBalance = useBalance(localProvider, address);
-
 
   let networkDisplay = ""
   if(localChainId && selectedChainId && localChainId != selectedChainId ){
@@ -132,8 +116,6 @@ const App = ({
 				<div className="content">
 					<Routes />
 				</div>
-
-				<ThemeSwitch />
 
 				{/* 👨‍💼 Your account is in the top right with a wallet at connect options */}
 				<div style={{ position: "fixed", textAlign: "right", right: 0, top: 0, padding: 10 }}>

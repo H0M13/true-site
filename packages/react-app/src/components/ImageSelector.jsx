@@ -6,7 +6,6 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from "redux";
 import { connect } from "react-redux";
 
-
 const ImageSelector = ({
 	intl: {
 		messages: {
@@ -18,13 +17,13 @@ const ImageSelector = ({
 	setFile: setParentFile
 }) => {
 	const [fileList, setFileList] = useState([]);
-	const [previewImage, setPeviewImage] = useState(null);
+	const [previewImage, setPreviewImage] = useState(null);
 
 	const props = {
 		onRemove: () => {
 			setFileList([]);
 			setParentFile(null);
-			setPeviewImage(null);
+			setPreviewImage(null);
 		},
 		beforeUpload: file => {
 			setFileList([file]);
@@ -44,7 +43,7 @@ const ImageSelector = ({
     
     const reader = new FileReader();
     reader.onload = (() => { return function(e) { 
-			setPeviewImage(e.target.result);
+			setPreviewImage(e.target.result);
 		}; })(img);
 
     reader.readAsDataURL(file);

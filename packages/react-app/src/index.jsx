@@ -10,15 +10,6 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 
-import { ThemeSwitcherProvider } from "react-css-theme-switcher";
-
-const themes = {
-  dark: `${process.env.PUBLIC_URL}/dark-theme.css`,
-  light: `${process.env.PUBLIC_URL}/light-theme.css`,
-};
-
-const prevTheme = window.localStorage.getItem("theme");
-
 let subgraphUri = "http://localhost:8000/subgraphs/name/scaffold-eth/your-contract"
 
 const client = new ApolloClient({
@@ -35,9 +26,7 @@ ReactDOM.render(
 	<ReduxProvider store={store}>
 		<BrowserRouter>
 			<ApolloProvider client={client}>
-				<ThemeSwitcherProvider themeMap={themes} defaultTheme={prevTheme ? prevTheme : "light"}>
-					<App subgraphUri={subgraphUri}/>
-				</ThemeSwitcherProvider>
+				<App subgraphUri={subgraphUri}/>
 			</ApolloProvider>
 		</BrowserRouter>
 	</ReduxProvider>,

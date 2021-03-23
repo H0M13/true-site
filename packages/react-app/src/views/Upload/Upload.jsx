@@ -48,8 +48,6 @@ const UploadView = ({
 					</Fragment>
 				)
 			}
-			
-    	
   	</Card>
 	);
 }
