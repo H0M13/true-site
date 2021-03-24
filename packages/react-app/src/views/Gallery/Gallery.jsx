@@ -11,7 +11,8 @@ const GalleryView = ({ localProvider, injectedProvider, targetNetwork }) => {
 
   return (
     <Gallery 
-		provider={localProvider}
+    provider={localProvider}
+    targetNetwork={targetNetwork}
 	/>
   );
 };
