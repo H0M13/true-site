@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import ImageSelector from '../../components/ImageSelector'
 import { Card, Button, Spin } from 'antd';
 import { injectIntl } from 'react-intl'
+import axios from 'axios'
 
 import './Upload.scss'
 import { useState } from "react";
@@ -21,6 +22,31 @@ const UploadView = ({
 }) => {
 	const [loading, setLoading] = useState(false);
 	const [file, setFile] = useState(null);
+
+	const apiPath = 'http://localhost:8000';
+
+	const handleSubmit = () => {
+		if (file) {
+			setLoading(true);
+			let data = new FormData();
+			data.append('file', file);
+			data.append('name', file.name);
+
+			const options = {
+				maxBodyLength: 'Infinity',
+				headers: {
+					'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
+				}
+			};
+
+			axios.post(`${apiPath}/image/upload`, data, options)
+				.then(result => console.info(result))
+				.catch(error => console.error(error))
+				.finally(() => {
+					setLoading(false);
+				});
+		}
+	};
 
   return (
 		<Card 
@@ -40,6 +66,7 @@ const UploadView = ({
 									type="primary" 
 									className="submitButton"
 									disabled={!file}
+									onClick={() => handleSubmit()}
 								>
 									{ submit }
 								</Button>

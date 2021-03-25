@@ -27,8 +27,8 @@ const ImageSelector = ({
 		},
 		beforeUpload: file => {
 			setFileList([file]);
-			setParentFile(file);
 			handleFiles(file);
+			setParentFile(file);
 			return false;
 		},
 		fileList,
@@ -44,6 +44,7 @@ const ImageSelector = ({
     const reader = new FileReader();
     reader.onload = (() => { return function(e) { 
 			setPreviewImage(e.target.result);
+			// setParentFile(e.target.result);
 		}; })(img);
 
     reader.readAsDataURL(file);
