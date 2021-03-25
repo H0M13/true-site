@@ -15,9 +15,6 @@ contract YourContract is ChainlinkClient {
   uint256 private fee;
 
   constructor() public {
-    images.push("QmdT7hKV1EfuaXSAYa65KUZWJnxF96yRPZNS9WeG8gUsR2");
-    imagesToModerationLabels["QmdT7hKV1EfuaXSAYa65KUZWJnxF96yRPZNS9WeG8gUsR2"] = "";
-
     setChainlinkToken(0x326C977E6efc84E512bB9C30f76E30c160eD06FB);
     oracle = 0x09B8eB93195Be2151656E7CF710f8b80B95e8f76;
     jobId = "2bc3a3027d784c50802c4fff43bf8825";
