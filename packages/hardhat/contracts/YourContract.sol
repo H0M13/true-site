@@ -16,8 +16,8 @@ contract YourContract is ChainlinkClient {
 
   constructor() public {
     setChainlinkToken(0x326C977E6efc84E512bB9C30f76E30c160eD06FB);
-    oracle = 0x09B8eB93195Be2151656E7CF710f8b80B95e8f76;
-    jobId = "2bc3a3027d784c50802c4fff43bf8825";
+    oracle = 0xAcBfAF35Aa28Cb45beC5f21dad6478fA445fFcC5;
+    jobId = "e381e964377d4f978d534fa0973e4d73";
     fee = 0.001 * 10 ** 18; // 0.001 LINK
   }
 

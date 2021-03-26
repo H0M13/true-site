@@ -2,7 +2,7 @@ import { Map } from 'immutable'
 import { JsonRpcProvider } from "@ethersproject/providers";
 import { NETWORKS, INFURA_ID } from "./constants";
 
-const network = 'localhost';
+const network = 'mumbai';
 
 const scaffoldEthProvider = new JsonRpcProvider("https://rpc.scaffoldeth.io:48544")
 const mainnetInfura = new JsonRpcProvider("https://mainnet.infura.io/v3/" + INFURA_ID)

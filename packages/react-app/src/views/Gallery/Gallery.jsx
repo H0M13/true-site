@@ -2,17 +2,14 @@ import React from "react";
 import { createStructuredSelector } from "reselect";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import { getInjectedProvider, getLocalProvider, getTargetNetwork } from "../../utils/duck";
-import { useUserProvider } from "../../hooks";
+import { getLocalProvider } from "../../utils/duck";
 import { Gallery } from "../../components"
 
-const GalleryView = ({ localProvider, injectedProvider, targetNetwork }) => {
-  const userProvider = useUserProvider(injectedProvider, localProvider);
+const GalleryView = ({ localProvider }) => {
 
   return (
     <Gallery 
     provider={localProvider}
-    targetNetwork={targetNetwork}
 	/>
   );
 };
@@ -20,9 +17,7 @@ const GalleryView = ({ localProvider, injectedProvider, targetNetwork }) => {
 const mapDispatchToProps = {};
 
 const mapStateToProps = createStructuredSelector({
-  localProvider: getLocalProvider,
-  injectedProvider: getInjectedProvider,
-  targetNetwork: getTargetNetwork,
+  localProvider: getLocalProvider
 });
 
 const hocChain = compose(connect(mapStateToProps, mapDispatchToProps));
