@@ -11,7 +11,7 @@
 		"api": "Error connecting to the API, please check your connection."
 	},
 	"loading": {
-		"label": "...Loading",
+		"label": "Loading",
 		"messages":
 			[
 				"Reticulating splines...",

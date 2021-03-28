@@ -9,12 +9,7 @@ const GalleryImages = ({ images }) => {
 	const [page, setPage] = useState(1);
 	const imagePerPage = 4;
 
-	useEffect(() => {
-    console.info(images);
-  }, [images]);
-
 	const pageChange = (page, pageSize) => {
-		console.info(pageSize);
 		setPage(page);
 	};
 

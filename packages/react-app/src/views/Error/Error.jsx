@@ -10,7 +10,6 @@ const ErrorView = ({
 }) => {
 	const { state } = useLocation();
 
-	console.log(state);
   return (
 		<div>
 			<WarningOutlined style={{ fontSize: '42px', color: '#7f0000', 'marginBottom': '5px'}} />

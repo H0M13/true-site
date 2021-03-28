@@ -44,7 +44,6 @@ const ImageSelector = ({
     const reader = new FileReader();
     reader.onload = (() => { return function(e) { 
 			setPreviewImage(e.target.result);
-			// setParentFile(e.target.result);
 		}; })(img);
 
     reader.readAsDataURL(file);
@@ -55,7 +54,7 @@ const ImageSelector = ({
 			{
 				previewImage && fileList.length > 0 && 
 					<Image
-						width={200}
+						className="uploadImage"
 						src={previewImage}
 					/> 
 			}

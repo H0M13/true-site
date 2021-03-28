@@ -12,7 +12,7 @@ import "./Upload.scss";
 import { useState } from "react";
 import Transactor from "../../utils/Transactor";
 import { useHistory } from 'react-router-dom';
-import Spinner from "../../components/Contract/Spinner/Spinner";
+import Spinner from "../../components/Spinner/Spinner";
 
 const UploadView = ({
   intl: {
@@ -55,8 +55,9 @@ const UploadView = ({
         },
       };
 
+			const endpoint = `${apiPath}/api/upload`;
       axios
-        .post(`${apiPath}/api/upload`, data, options)
+        .post(endpoint, data, options)
         .then(result => {
 					console.info(result)
 					return postContentHash(result.data.IpfsHash)

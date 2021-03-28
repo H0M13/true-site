@@ -19,7 +19,7 @@ const Spinner = ({
   return (
 		<div>
 			<svg
-				preserveAspectRatio="xMidYMid meet"
+				className="spinnerSVG"
 				version="1.1"
 				viewBox="-50 -50 100 100"
 				xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -48,8 +48,8 @@ const Spinner = ({
 				/>
 			</svg>
 
-			<div>{ label }</div>
-			<div>{ `(${messages[Math.floor(Math.random() * messages.length)]})` }</div>
+			<div className="spinnerLabel">{ label }</div>
+			<div className="spinnerMessage">{ `${messages[Math.floor(Math.random() * messages.length)]}` }</div>
 		</div>
 	);
 }

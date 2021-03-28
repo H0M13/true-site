@@ -8,7 +8,7 @@ import { useContractLoader } from "../../hooks";
 import GalleryPages from "../../components/Gallery/GalleryPages";
 import axios from "axios";
 import bs58 from "bs58";
-import Spinner from "../../components/Contract/Spinner/Spinner.jsx";
+import Spinner from "../../components/Spinner/Spinner.jsx";
 
 const ipfsGatewayUrl = "https://gateway.ipfs.io/ipfs/";
 
