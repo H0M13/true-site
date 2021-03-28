@@ -3,7 +3,7 @@ import { createStructuredSelector } from "reselect";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import ImageSelector from "../../components/ImageSelector";
-import { Card, Button, Spin } from "antd";
+import { Card, Button, Space } from "antd";
 import { injectIntl } from "react-intl";
 import axios from "axios";
 import { getInjectedProvider, getLocalProvider, getTargetNetwork } from "../../utils/duck";
@@ -11,14 +11,15 @@ import { useUserProvider, useGasPrice, useContractLoader } from "../../hooks";
 import "./Upload.scss";
 import { useState } from "react";
 import Transactor from "../../utils/Transactor";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import Spinner from "../../components/Spinner/Spinner";
+import { UserInstructions } from "../../components/Instructions";
 
 const UploadView = ({
   intl: {
     messages: {
       upload: { uploadTitle, submit },
-			error: { api: apiError },
+      error: { api: apiError },
     },
   },
   localProvider,
@@ -28,7 +29,7 @@ const UploadView = ({
   const [loading, setLoading] = useState(false);
   const [file, setFile] = useState(null);
   const userProvider = useUserProvider(injectedProvider, localProvider);
-	const history = useHistory();
+  const history = useHistory();
 
   const apiPath = "https://truesite.link";
 
@@ -55,26 +56,26 @@ const UploadView = ({
         },
       };
 
-			const endpoint = `${apiPath}/api/upload`;
+      const endpoint = `${apiPath}/api/upload`;
       axios
         .post(endpoint, data, options)
         .then(result => {
-					console.info(result)
-					return postContentHash(result.data.IpfsHash)
-				})
+          console.info(result);
+          return postContentHash(result.data.IpfsHash);
+        })
         .catch(error => {
-					console.error(error);
-					history.push('/error', {
-						message: apiError
-					});
-				})
+          console.error(error);
+          history.push("/error", {
+            message: apiError,
+          });
+        })
         .finally(() => {
           setLoading(false);
         });
     }
   };
 
-  const postContentHash = async (ipfsHash) => {
+  const postContentHash = async ipfsHash => {
     const addImageFn = contract.connect(signer).addImage;
     const transactor = Transactor(provider, gasPrice);
     const result = await transactor(addImageFn(ipfsHash));
@@ -82,25 +83,28 @@ const UploadView = ({
   };
 
   return (
-    <Card
-      title={uploadTitle}
-      style={{
-        width: 400,
-      }}
-    >
-      {loading ? (
-        <Spinner />
-      ) : (
-        <Fragment>
-          <ImageSelector setFile={setFile} />
-          {file && (
-            <Button type="primary" className="submitButton" disabled={!file} onClick={() => handleSubmit()}>
-              {submit}
-            </Button>
-          )}
-        </Fragment>
-      )}
-    </Card>
+    <Space size='middle' wrap='true' align='center'>
+      <UserInstructions />
+      <Card
+        title={uploadTitle}
+        style={{
+          width: 400,
+        }}
+      >
+        {loading ? (
+          <Spinner />
+        ) : (
+          <Fragment>
+            <ImageSelector setFile={setFile} />
+            {file && (
+              <Button type="primary" className="submitButton" disabled={!file} onClick={() => handleSubmit()}>
+                {submit}
+              </Button>
+            )}
+          </Fragment>
+        )}
+      </Card>
+    </Space>
   );
 };
 
