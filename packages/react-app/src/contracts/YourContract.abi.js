@@ -44,10 +44,42 @@ module.exports = [
     "type": "event"
   },
   {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_imageContentHash",
+        "type": "string"
+      }
+    ],
+    "name": "ImageAdded",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_imageContentHash",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "_moderationLabels",
+        "type": "bytes32"
+      }
+    ],
+    "name": "ModerationCompleted",
+    "type": "event"
+  },
+  {
     "inputs": [
       {
         "internalType": "string",
-        "name": "imageContentHash",
+        "name": "_imageContentHash",
         "type": "string"
       }
     ],
@@ -71,7 +103,7 @@ module.exports = [
       },
       {
         "internalType": "bytes32",
-        "name": "_moderationLabelsContentHash",
+        "name": "_moderationLabelsBytes32",
         "type": "bytes32"
       }
     ],
@@ -154,7 +186,7 @@ module.exports = [
     "inputs": [
       {
         "internalType": "string",
-        "name": "imageContentHash",
+        "name": "_imageContentHash",
         "type": "string"
       }
     ],
