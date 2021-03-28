@@ -61,6 +61,7 @@
     ]
   },
   "dependencies": {
+    "@ant-design/icons": "^4.6.2",
     "node-sass": "4.14.1",
     "rc-util": "^5.9.4",
     "react-intl": "^5.13.5",

@@ -1,0 +1,33 @@
+.galleryPage {
+	display: flex;
+	max-width: 800px;
+	min-height: 600px;
+	text-align: center;
+	flex-wrap: wrap;
+	margin-bottom: 20px;
+	justify-content: center;
+	align-items: center;
+}
+
+.galleryImageContainer {
+	padding: 10px;
+	width: 400px;
+	height: 300px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.ant-image-img {
+	width: auto !important;
+}
+
+.burEdge {
+	overflow: hidden;
+	margin: -10px;
+	border: solid #f0f0f0 2px;
+}
+
+.blurImage {
+	filter: saturate(.4) blur(10px);
+}

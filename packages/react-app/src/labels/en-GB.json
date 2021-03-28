@@ -6,5 +6,8 @@
 		"uploadTitle": "🖼️ Upload Image",
 		"uploadSelect": "Select Image (Max: 1)",
 		"submit": "Submit"
+	},
+	"error": {
+		"api": "Error connecting to the API, please check your connection."
 	}
 }

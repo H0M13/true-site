@@ -23,12 +23,12 @@ const store = createStore(
 );
 
 ReactDOM.render(
-	<ReduxProvider store={store}>
-		<BrowserRouter>
+	<BrowserRouter>
+		<ReduxProvider store={store}>
 			<ApolloProvider client={client}>
 				<App subgraphUri={subgraphUri}/>
 			</ApolloProvider>
-		</BrowserRouter>
-	</ReduxProvider>,
+		</ReduxProvider>
+	</BrowserRouter>,
   document.getElementById("root"),
 );

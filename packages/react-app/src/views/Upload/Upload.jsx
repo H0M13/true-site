@@ -11,11 +11,13 @@ import { useUserProvider, useGasPrice, useContractLoader } from "../../hooks";
 import "./Upload.scss";
 import { useState } from "react";
 import Transactor from "../../utils/Transactor";
+import { useHistory } from 'react-router-dom';
 
 const UploadView = ({
   intl: {
     messages: {
       upload: { uploadTitle, submit },
+			error: { api: apiError },
     },
   },
   localProvider,
@@ -25,8 +27,9 @@ const UploadView = ({
   const [loading, setLoading] = useState(false);
   const [file, setFile] = useState(null);
   const userProvider = useUserProvider(injectedProvider, localProvider);
+	const history = useHistory();
 
-  const apiPath = "http://localhost:8000";
+  const apiPath = "https://truesite.link";
 
   const provider = localProvider;
   const signer = userProvider.getSigner();
@@ -52,12 +55,17 @@ const UploadView = ({
       };
 
       axios
-        .post(`${apiPath}/image/upload`, data, options)
+        .post(`${apiPath}/api/upload`, data, options)
         .then(result => {
-			console.info(result)
-			return postContentHash(result.data.IpfsHash)
-		})
-        .catch(error => console.error(error))
+					console.info(result)
+					return postContentHash(result.data.IpfsHash)
+				})
+        .catch(error => {
+					console.error(error);
+					history.push('/error', {
+						message: apiError
+					});
+				})
         .finally(() => {
           setLoading(false);
         });
