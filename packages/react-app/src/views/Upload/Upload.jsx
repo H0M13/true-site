@@ -12,6 +12,7 @@ import "./Upload.scss";
 import { useState } from "react";
 import Transactor from "../../utils/Transactor";
 import { useHistory } from 'react-router-dom';
+import Spinner from "../../components/Contract/Spinner/Spinner";
 
 const UploadView = ({
   intl: {
@@ -87,7 +88,7 @@ const UploadView = ({
       }}
     >
       {loading ? (
-        <Spin size="large" />
+        <Spinner />
       ) : (
         <Fragment>
           <ImageSelector setFile={setFile} />

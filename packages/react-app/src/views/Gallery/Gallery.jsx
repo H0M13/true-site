@@ -3,12 +3,12 @@ import { createStructuredSelector } from "reselect";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { getLocalProvider } from "../../utils/duck";
-import { Spin } from "antd";
 import { ethers } from "ethers";
 import { useContractLoader } from "../../hooks";
 import GalleryPages from "../../components/Gallery/GalleryPages";
 import axios from "axios";
 import bs58 from "bs58";
+import Spinner from "../../components/Contract/Spinner/Spinner.jsx";
 
 const ipfsGatewayUrl = "https://gateway.ipfs.io/ipfs/";
 
@@ -65,11 +65,7 @@ const GalleryView = ({ localProvider }) => {
   };
 
 	if (loading) {
-		return (
-			<div>
-				<Spin size="large" />
-				<div>Loading</div>
-			</div>);
+		return <Spinner />;
 	}
 
   return (

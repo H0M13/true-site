@@ -1,0 +1,24 @@
+.example3-rect {
+	stroke: black;
+	stroke-width: 1%;
+	stroke-dasharray: 10, 6;
+	fill: none;
+	animation:
+		example3-animation
+		2.5s
+		linear
+		infinite;
+}
+
+.example3-rect:nth-of-type(odd) {
+	animation-direction: reverse;
+}
+
+@keyframes example3-animation {
+	from {
+		stroke-dashoffset: 0;
+	}
+	to {
+		stroke-dashoffset: 16%;
+	}
+}
