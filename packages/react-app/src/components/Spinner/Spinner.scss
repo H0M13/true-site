@@ -1,5 +1,7 @@
+@import "../../theme";
+
 .example3-rect {
-	stroke: black;
+	stroke: $light;
 	stroke-width: 1%;
 	stroke-dasharray: 10, 6;
 	fill: none;
@@ -25,4 +27,15 @@
 
 .spinnerSVG {
 	width: 270px;
+}
+
+.spinnerLabel {
+	margin-top: -50px;
+	margin-bottom: 10px;
+	font-size: 26px;
+	color: $light;
+}
+
+.spinnerMessage {
+	color: $light;
 }

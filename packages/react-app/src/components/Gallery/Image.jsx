@@ -3,6 +3,7 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { Image } from 'antd';
+import { ExclamationCircleOutlined } from '@ant-design/icons';
 
 import './gallery.scss'
 
@@ -19,15 +20,22 @@ const GalleryImage = ({
   return (
 		<div className="galleryImageContainer">
 			{image.hasModerationLabels && (
-				<div>
+				<div className="imageContainer">
 					{/* <img style={{ maxWidth: "300px", height: "280px" }} src={imageHashUrl} /> */}
 					{/* <span>
 						Moderation labels: <a href={moderationLabelsUrl}>{moderationLabelsUrl}</a>
 					</span> */}
+					{
+						explict && (
+							<div className="warningLabel">
+							<ExclamationCircleOutlined style={{ 'marginRight': '5px'}} /> Content Flagged
+							</div>
+						)
+					}
 
 					<div className={explict && "blurImage"}>
 						<Image
-							height={250}
+							height={200}
 							src={imageHashUrl}
 						/>
 					</div>

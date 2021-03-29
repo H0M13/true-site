@@ -1,6 +1,8 @@
+@import "../../theme";
+
 .galleryPage {
 	display: flex;
-	max-width: 800px;
+	max-width: 900px;
 	min-height: 600px;
 	text-align: center;
 	flex-wrap: wrap;
@@ -11,29 +13,42 @@
 
 .galleryImageContainer {
 	padding: 10px;
-	width: 400px;
-	height: 300px;
+	width: 250px;
+	height: 210px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	position: relative;
+}
+
+.warningLabel {
+	position: absolute;
+	background-color: $violet;
+	color: $light;
+	border-radius: 3px;
+	padding: 2px 8px;
+	display: inline-block;
+	z-index: 2;
+	margin: auto;
+	top: 15px;
+	left: 35px;
+	font-size: 12px;
 }
 
 .ant-image-img {
 	width: auto !important;
 }
 
-.burEdge {
+.imageContainer {
 	overflow: hidden;
-	margin: -10px;
-	border: solid #f0f0f0 2px;
+	height: 190px;
+	width: 190px;
+	border: solid $light 2px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .blurImage {
 	filter: saturate(.4) blur(10px);
-}
-
-.spinnerLabel {
-	margin-top: -50px;
-	margin-bottom: 10px;
-	font-size: 26px;
 }

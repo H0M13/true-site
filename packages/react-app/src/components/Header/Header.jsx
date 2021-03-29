@@ -2,15 +2,18 @@ import React from "react";
 import { createStructuredSelector } from 'reselect';
 import { compose } from "redux";
 import { connect } from "react-redux";
-import { } from '../../utils/duck'
+import { PageHeader } from "antd";
+import { injectIntl } from 'react-intl'
 
+import './Header.scss'
 
-const About = ({
+const Header = ({
 }) => {
   return (
-		<div>
-			About Placeholder
-		</div>
+		<PageHeader
+			title="🛡️ TrueSite"
+			subTitle="A confusingly-named demo of TrueSight"
+		/>
 	);
 }
 
@@ -24,4 +27,4 @@ const hocChain = compose(
 	connect(mapStateToProps, mapDispatchToProps),
 );
 
-export default hocChain(About);
+export default hocChain(Header);

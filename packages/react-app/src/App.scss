@@ -1,3 +1,5 @@
+@import "theme";
+
 .App {
   text-align: center;
 }
@@ -9,4 +11,9 @@
 	justify-content: center;
 	align-items: center;
 	padding: 20px;
+}
+
+body {
+	// background-color: #eaf1f8;
+	background-image: linear-gradient(to bottom right, $backgroundTopColor, $backgroundBottomColor);
 }

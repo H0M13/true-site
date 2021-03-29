@@ -1,0 +1,53 @@
+$light: white;
+$darkPurple: #161320;
+// $darkest: darken($darkPurple, 20);
+
+$violet: #472980;
+
+$backgroundTopColor: $darkPurple;
+$backgroundBottomColor: darken($violet, 10);
+
+
+// Hacky AntD overrides
+.ant-page-header-heading-title,
+.ant-page-header-heading-sub-title,
+.ant-menu-horizontal a {
+	color: $light !important;
+}
+
+.ant-menu-item-selected,
+.ant-menu-item-active {
+	border-color: $light !important;
+} 
+
+.ant-menu {
+	background-color: transparent;
+	border-color: transparent;
+}
+
+.ant-pagination-item-link{
+	background-color: $violet !important;
+	border-color: darken($violet, 20) !important;
+	color: $light !important;
+}
+
+.ant-pagination-item a {
+	color: $light !important;
+	background-color: $violet !important;
+}
+
+
+.ant-pagination-item {
+	border-color: darken($violet, 20) !important;
+}
+
+.ant-pagination-item-active {
+	border-color: $light !important;
+}
+
+.ant-btn {
+	background-color: $violet !important;
+	border-color: darken($violet, 20) !important;
+	color: $light !important;
+}
+

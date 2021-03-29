@@ -7,7 +7,7 @@ import './gallery.scss'
 
 const GalleryImages = ({ images }) => {
 	const [page, setPage] = useState(1);
-	const imagePerPage = 4;
+	const imagePerPage = 6;
 
 	const pageChange = (page, pageSize) => {
 		setPage(page);
