@@ -1,30 +1,33 @@
 import React from "react";
-import { createStructuredSelector } from 'reselect';
+import { createStructuredSelector } from "reselect";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { PageHeader } from "antd";
-import { injectIntl } from 'react-intl'
+import { ReactComponent as TrueSightLogo } from "./linkward.svg";
 
-import './Header.scss'
+import "./Header.scss";
 
-const Header = ({
-}) => {
+const Header = ({}) => {
   return (
-		<PageHeader
-			title="🛡️ TrueSite"
-			subTitle="A confusingly-named demo of TrueSight"
-		/>
-	);
-}
-
-const mapDispatchToProps = {
+    <PageHeader
+      title="🛡️ TrueSite"
+      subTitle={
+        <span className="header-subtitle">
+          ...a confusingly-named demo of{" "}
+          <a href="https://truesight.link" className="header-link">
+            <TrueSightLogo className="header-truesight-icon" />
+            <span>TrueSight</span>
+          </a>
+        </span>
+      }
+    />
+  );
 };
 
-const mapStateToProps = createStructuredSelector({
-});
+const mapDispatchToProps = {};
 
-const hocChain = compose(
-	connect(mapStateToProps, mapDispatchToProps),
-);
+const mapStateToProps = createStructuredSelector({});
+
+const hocChain = compose(connect(mapStateToProps, mapDispatchToProps));
 
 export default hocChain(Header);

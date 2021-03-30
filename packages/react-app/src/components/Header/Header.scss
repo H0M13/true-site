@@ -1,0 +1,43 @@
+.header-subtitle {
+  display: flex;
+  align-items: center;
+}
+
+.header-truesight-icon {
+    fill: white;
+    width: 30px;
+    height: 40px;
+    margin: 6px 12px 6px 6px;
+}
+
+.header-link {
+  margin: 0 10px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 4px solid #3ce07e;
+  color: white;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  line-height: 1;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+
+  text-decoration:underline;
+  text-decoration-color: #3ce07e;
+  text-decoration-thickness: 3px;
+
+  &:hover {
+    color: black;
+    background-color: white;
+    box-shadow: 5px 5px 10px black;
+    text-decoration:underline;
+    text-decoration-color: black;
+    text-decoration-thickness: 3px;
+
+    & .header-truesight-icon {
+        fill: black;
+    }
+  }
+}

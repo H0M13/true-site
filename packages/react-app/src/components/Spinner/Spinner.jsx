@@ -26,21 +26,21 @@ const Spinner = ({
 				xmlns="http://www.w3.org/2000/svg"
 			>
 				<rect
-					class="example3-rect"
+					className="example3-rect"
 					x="-8"
 					y="-8"
 					height="16"
 					width="16"
 				/>
 				<rect
-					class="example3-rect"
+					className="example3-rect"
 					x="-16"
 					y="-16"
 					height="32"
 					width="32"
 				/>
 				<rect
-					class="example3-rect"
+					className="example3-rect"
 					x="-24"
 					y="-24"
 					height="48"
