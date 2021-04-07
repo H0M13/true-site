@@ -22,7 +22,30 @@ export const UserInstructions = () => {
       <Typography.Text>
         Press the 'Connect' button in the top-right corner to connect Metamask to this app.
       </Typography.Text>
-      <Typography.Title level={3}>You should now be able to upload and submit an image! 🥳</Typography.Title>
+      <Typography.Title level={3}>
+        You should now be able to upload and submit an image to appear in the gallery! 🥳
+      </Typography.Title>
+      <Typography.Text>Moderation labels will be calculated for your image upon submission.</Typography.Text>
+      <Typography.Text>
+        If flagged, your image will be blurred by default with a summary of the moderation labels to give other users
+        prior warning before they view it.
+      </Typography.Text>
+      <Typography.Text>
+        This prototype of TrueSight only requests moderation labels from Amazon Rekognition. For documentation on the
+        supported label categories please see the{" "}
+        <a href="https://docs.aws.amazon.com/rekognition/latest/dg/moderation.html">Amazon Rekognition docs</a>.
+      </Typography.Text>
+      <Typography.Text>
+        <b>
+          Please feel free to upload images which are likely to trigger generation of moderation labels but please
+          nothing illegal!
+        </b>
+      </Typography.Text>
+      <Typography.Text>
+        <b>
+          Images of a person making a middle finger gesture are a pretty sure and innocent way to trigger a moderation label 😁🖕
+        </b>
+      </Typography.Text>
     </Card>
   );
 };
