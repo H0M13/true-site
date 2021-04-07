@@ -14,7 +14,7 @@ const Footer = () => {
 
 	return (
 		<div className="footerContainer">
-			Made with <span role="img" aria-label="purple heart emoji">💜</span> for the ChainLink Hackathon
+			Made with <span role="img" aria-label="purple heart emoji">💜</span> for the <a target="_blank" href="https://chainlink-2021.devpost.com/">Spring 2021 ChainLink Hackathon</a>{" "}
 			- <a target="_blank" href="https://github.com/H0M13/TrueSight-explainer"><GithubOutlined /> GitHub</a>
 			{" "} - <a target="_blank" href={`https://explorer-mumbai.maticvigil.com/address/${address}/transactions`}><PolygonLogo className="polygonLogo" /> Mumbai Testnet</a>
 		</div >
