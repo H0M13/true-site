@@ -44,11 +44,53 @@
 	height: 190px;
 	width: 190px;
 	border: solid $light 2px;
+	border-radius: 5px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background-color: grey;
+	box-shadow: rgba(darken($violet, 5), 0.3) 5px 5px, rgba(darken($violet, 5), 0.2) 10px 10px, rgba(darken($violet, 5), 0.1) 15px 15px, rgba(darken($violet, 5), 0.05) 20px 20px, rgba(darken($violet, 5), 0.02) 25px 25px;
 }
 
 .blurImage {
-	filter: saturate(.4) blur(10px);
+	filter: saturate(0.1) blur(12px);
+}
+
+.image-green-truesight-icon {
+	fill: #298048;
+  width: 30px;
+  height: auto;
+	position: absolute;
+	z-index: 1;
+	bottom: 20px;
+	right: 40px;
+	margin: auto;
+	opacity: 0.3;
+}
+
+.labelContainer {
+	display: inline-flex;
+	position: absolute;
+	z-index: 1;
+	margin: auto;
+	bottom: 20px;
+	right: 40px;
+	flex-direction: column;
+}
+
+.moderationLabel {
+	display: inline-flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	margin-top: 4px;
+	font-weight: bold;
+}
+
+.moderationLabel > .ant-progress {
+	margin-left: 5px;
+}
+
+.labelTitle {
+	font-size: 12px;
 }

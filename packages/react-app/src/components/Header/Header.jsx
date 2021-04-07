@@ -1,27 +1,23 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { createStructuredSelector } from "reselect";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { PageHeader } from "antd";
-import { ReactComponent as TrueSightLogo } from "./linkward.svg";
+import { ReactComponent as TrueSightLogo } from "../linkward.svg";
 
 import "./Header.scss";
 
-const Header = ({}) => {
-  return (
-    <PageHeader
-      title="🛡️ TrueSite"
-      subTitle={
-        <span className="header-subtitle">
-          ...a confusingly-named demo of{" "}
-          <a href="https://truesight.link" className="header-link">
-            <TrueSightLogo className="header-truesight-icon" />
-            <span>TrueSight</span>
-          </a>
-        </span>
-      }
-    />
-  );
+const Header = ({ }) => {
+	return (
+		<Fragment>
+			<div className="titleContainer">
+				<TrueSightLogo className="header-truesight-icon" />
+				<div className="title">TrueSite</div>
+				<div className="subtitle">a confusingly-named demo of </div>
+				<div className="titleLink"><a target="_blank" href="https://github.com/H0M13/TrueSight-explainer">TrueSight</a></div>
+			</div>
+		</Fragment>
+	);
 };
 
 const mapDispatchToProps = {};

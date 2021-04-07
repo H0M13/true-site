@@ -6,15 +6,14 @@ import { WarningOutlined, FrownOutlined } from '@ant-design/icons';
 import { useLocation } from 'react-router-dom';
 
 
-const ErrorView = ({
-}) => {
+const ErrorView = () => {
 	const { state } = useLocation();
 
-  return (
+	return (
 		<div>
-			<WarningOutlined style={{ fontSize: '42px', color: '#7f0000', 'marginBottom': '5px'}} />
+			<WarningOutlined style={{ fontSize: '42px', color: '#7f0000', 'marginBottom': '5px' }} />
 			<div>Oh no! Something went wrong <FrownOutlined /></div>
-			{state && state.message && <div> { state.message } </div>}
+			{state && state.message && <div> {state.message} </div>}
 		</div>
 	);
 }

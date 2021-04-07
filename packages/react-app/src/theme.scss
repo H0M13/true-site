@@ -1,12 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500&display=swap');
+
 $light: white;
 $darkPurple: #161320;
-// $darkest: darken($darkPurple, 20);
-
 $violet: #472980;
-
 $backgroundTopColor: $darkPurple;
 $backgroundBottomColor: darken($violet, 10);
-
 
 // Hacky AntD overrides
 .ant-page-header-heading-title,
@@ -23,6 +21,7 @@ $backgroundBottomColor: darken($violet, 10);
 .ant-menu {
 	background-color: transparent;
 	border-color: transparent;
+	font-family: 'Archivo', sans-serif;
 }
 
 .ant-pagination-item-link{
@@ -51,3 +50,45 @@ $backgroundBottomColor: darken($violet, 10);
 	color: $light !important;
 }
 
+.ant-card-body {
+	// background-image: linear-gradient(to top, lighten($violet, 15), lighten($violet, 0)) !important;
+	background-color: $violet !important;
+}
+
+.ant-typography {
+	color: $light !important;
+}
+
+.ant-upload-list-item {
+	background-color: lighten($violet, 65) !important;
+}
+
+.anticon-delete {
+	color: $light !important;
+}
+
+.ant-upload > .ant-btn {
+	border-color: $light !important;
+}
+
+.ant-progress-circle-path, .ant-progress-text {
+	stroke: $darkPurple !important;
+	color: $darkPurple !important;
+}
+
+.ant-progress-circle-trail {
+	stroke: transparent !important;
+}
+
+h3, h4 {
+	font-family: 'Archivo', sans-serif;
+}
+
+.accountButton {
+	background-color: darken($violet, 20) !important;
+}
+
+.anticon-picture path:nth-child(1),
+.anticon-picture path:nth-child(5) {
+	fill: $violet !important;
+}

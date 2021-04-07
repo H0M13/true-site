@@ -1,0 +1,20 @@
+@import "../../theme";
+
+.footerContainer {
+	color: $light;
+	height: 30px;
+}
+
+a {
+	color: darken($light, 5);
+}
+
+a:hover {
+	color: lighten($violet, 40);
+}
+
+.polygonLogo {
+	height: 14px;
+	width: auto;
+	fill: $light;
+}

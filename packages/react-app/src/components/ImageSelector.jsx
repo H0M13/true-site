@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Upload, Button, Space, Image  } from 'antd';
+import { Upload, Button, Space, Image } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { injectIntl } from 'react-intl'
 import { createStructuredSelector } from 'reselect';
@@ -38,32 +38,34 @@ const ImageSelector = ({
 
 	const handleFiles = (file) => {
 		const img = document.createElement("img");
-    img.classList.add("obj");
-    img.file = file;
-    
-    const reader = new FileReader();
-    reader.onload = (() => { return function(e) { 
-			setPreviewImage(e.target.result);
-		}; })(img);
+		img.classList.add("obj");
+		img.file = file;
 
-    reader.readAsDataURL(file);
+		const reader = new FileReader();
+		reader.onload = (() => {
+			return function (e) {
+				setPreviewImage(e.target.result);
+			};
+		})(img);
+
+		reader.readAsDataURL(file);
 	}
 
-  return (
+	return (
 		<Space direction="vertical" style={{ width: '100%' }} size="small">
 			{
-				previewImage && fileList.length > 0 && 
-					<Image
-						className="uploadImage"
-						src={previewImage}
-					/> 
+				previewImage && fileList.length > 0 &&
+				<Image
+					className="uploadImage"
+					src={previewImage}
+				/>
 			}
 			<Upload
-				{ ...props }
+				{...props}
 			>
-				{ fileList.length == 0 && <Button icon={<UploadOutlined />}>{uploadSelect}</Button> }
+				{fileList.length === 0 && <Button icon={<UploadOutlined />}>{uploadSelect}</Button>}
 			</Upload>
-  	</Space>
+		</Space>
 	);
 }
 

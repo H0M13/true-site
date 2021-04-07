@@ -1,19 +1,62 @@
 @import "theme";
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap');
 
 .App {
   text-align: center;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
 }
 
 .content {
 	width: 100vw;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
 	padding: 20px;
+	flex-grow: 1;
 }
 
 body {
-	// background-color: #eaf1f8;
 	background-image: linear-gradient(to bottom right, $backgroundTopColor, $backgroundBottomColor);
+	font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.waveTop {
+  position: absolute;
+  width: 100%;
+  height: auto;
+	z-index: -1;
+	top: -10px;
+	transform: rotate(180deg);
+}
+
+.waveTopBox {
+	position: absolute;
+	top: 0;
+	display: inline-block;
+	z-index: -2;
+	width: 100vw;
+	height: 0px;
+
+	background-color: $violet;
+	opacity: 0.7;
+}
+
+.waveBottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+	z-index: -1;
+}
+
+.wavePath {
+	fill: url(#waveGradient) $violet;
+}
+
+.waveGradient {
+	width:0;
+	height:0;
+	position:absolute;
 }
