@@ -31,7 +31,7 @@ const UploadView = ({
   const userProvider = useUserProvider(injectedProvider, localProvider);
   const history = useHistory();
 
-  const apiPath = "https://truesite.link";
+  const apiPath = process.env.REACT_APP_API_URL || "https://truesite.link";
 
   const provider = localProvider;
   const signer = userProvider.getSigner();
