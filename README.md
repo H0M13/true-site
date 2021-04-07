@@ -2,6 +2,8 @@
 
 ### Dapp built as part of the [Spring 2021 Chainlink Virtual Hackathon](https://chainlink-2021.devpost.com/) to demonstrate a simple usage of [TrueSight](https://truesight.link/), a prototype for an oracle network built to provide moderation labels for user-generated content.
 
+<img src="https://user-images.githubusercontent.com/6655367/113873595-dcd44500-97ac-11eb-87f6-ca17991c6fa4.png" />
+
 Users are able to upload images to an [API](https://github.com/H0M13/true-site-api). There the images are pinned to IPFS and the IPFS content hash is returned. The user is then prompted to make a transaction to store the image content hash on the dapp smart contract.
 
 Upon submission of the transaction the smart contract requests moderation labels on the image from a Chainlink node and receives back another IPFS content hash representing the generated moderation labels. <b>Note: the IPFS content hash is transformed to a bytes32 type to respect the maximum size of return values from Chainlink nodes of 32 bytes</b>.
