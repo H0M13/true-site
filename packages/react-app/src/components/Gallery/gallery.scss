@@ -48,7 +48,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: grey;
+	background-color: #ccc;
 	box-shadow: rgba(darken($violet, 5), 0.3) 5px 5px, rgba(darken($violet, 5), 0.2) 10px 10px, rgba(darken($violet, 5), 0.1) 15px 15px, rgba(darken($violet, 5), 0.05) 20px 20px, rgba(darken($violet, 5), 0.02) 25px 25px;
 }
 
@@ -58,8 +58,8 @@
 
 .image-green-truesight-icon {
 	fill: #298048;
-  width: 30px;
-  height: auto;
+  	width: 30px;
+  	height: auto;
 	position: absolute;
 	z-index: 1;
 	bottom: 20px;

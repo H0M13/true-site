@@ -43,7 +43,7 @@ const GalleryImage = ({ image }) => {
           {!explicit && <TrueSightLogo className="image-green-truesight-icon" />}
 
           <div className={explicit ? "blurImage" : ""}>
-            <Image height={200} src={imageHashUrl} />
+            <Image height={200} src={imageHashUrl} placeholder={true} />
           </div>
         </div>
       )}
