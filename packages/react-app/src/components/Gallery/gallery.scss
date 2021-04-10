@@ -52,8 +52,36 @@
 	box-shadow: rgba(darken($violet, 5), 0.3) 5px 5px, rgba(darken($violet, 5), 0.2) 10px 10px, rgba(darken($violet, 5), 0.1) 15px 15px, rgba(darken($violet, 5), 0.05) 20px 20px, rgba(darken($violet, 5), 0.02) 25px 25px;
 }
 
+.imagePlaceholder {
+	display: flex;
+	flex-direction: column;
+}
+
+.imagePlaceholderLabel {
+	margin: 10px 0 0 0;
+	color: $violet;
+}
+
+.imagePlaceholderGrowTop {
+	flex-grow: 1.5;
+	width: 100%;
+	display: inline-block;
+}
+
+.imagePlaceholderGrowBottom {
+	flex-grow: 1;
+	width: 100%;
+	display: inline-block;
+}
+
+.imagePlaceholderFooter {
+	margin: 0 0 5px 0;
+	font-size: 12px;
+	color: $violet;
+}
+
 .blurImage {
-	filter: saturate(0.1) blur(12px);
+	filter: saturate(0.05) blur(16px) brightness(1.2);
 }
 
 .image-green-truesight-icon {
@@ -89,8 +117,10 @@
 
 .moderationLabel > .ant-progress {
 	margin-left: 5px;
+	filter: drop-shadow( 1px 1px 10px rgba($light, .95)) drop-shadow( -1px -1px 10px rgba($light, .95));
 }
 
 .labelTitle {
 	font-size: 12px;
+	text-shadow:-1px -1px 10px rgba($light, .95), 1px 1px 10px rgba($light, .95);
 }
