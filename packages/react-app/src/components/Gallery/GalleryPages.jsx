@@ -1,39 +1,44 @@
 import React, { Fragment, useEffect } from "react";
 import { useState } from "react";
-import { Pagination } from 'antd';
-import GalleryImage from './Image'
+import { Pagination } from "antd";
+import GalleryImage from "./Image";
 
-import './gallery.scss'
+import "./gallery.scss";
 
-const GalleryImages = ({ images }) => {
-	const [page, setPage] = useState(1);
-	const imagePerPage = 6;
+const GalleryImages = ({ images, onPageChange }) => {
+  const [page, setPage] = useState(1);
+  const imagePerPage = 6;
 
-	const pageChange = (page, pageSize) => {
-		setPage(page);
-	};
+  useEffect(() => {
+    onPageChange && onPageChange(page, imagePerPage);
+  }, []);
 
-	const getPage = () => {
-		const start = Math.min((page-1) * imagePerPage, images.length);
-		const end = Math.min(start + imagePerPage, images.length);
-		return images.slice(start, end);
-	};
+  const pageChange = (page, pageSize) => {
+    setPage(page);
+    onPageChange && onPageChange(page, pageSize);
+  };
+
+  const getPage = () => {
+    const start = Math.min((page - 1) * imagePerPage, images.length);
+    const end = Math.min(start + imagePerPage, images.length);
+    return images.slice(start, end);
+  };
 
   return (
-		<Fragment>
-			<div className="galleryPage">
-				{
-					getPage().map(image => <GalleryImage key={image.imageHash} image={image} />)
-				}
-			</div>
-			
-			<Pagination 
-				defaultCurrent={page} 
-				defaultPageSize={imagePerPage}
-				total={images.length} 
-				onChange={(page, pageSize) => pageChange(page, pageSize)} 
-			/>
-		</Fragment>
+    <Fragment>
+      <div className="galleryPage">
+        {getPage().map(image => (
+          <GalleryImage key={image.imageHash} image={image} />
+        ))}
+      </div>
+
+      <Pagination
+        defaultCurrent={page}
+        defaultPageSize={imagePerPage}
+        total={images.length}
+        onChange={(page, pageSize) => pageChange(page, pageSize)}
+      />
+    </Fragment>
   );
 };
 
