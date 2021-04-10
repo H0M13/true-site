@@ -2,21 +2,13 @@ import React from "react";
 import { createStructuredSelector } from 'reselect';
 import { compose } from "redux";
 import { connect } from "react-redux";
-import { injectIntl } from "react-intl";
+
+import messages from "../../labels/loadingMessages.json"
 
 import './Spinner.scss'
 
-const Spinner = ({
-	intl: {
-    messages: {
-      loading: {
-				label,
-				messages
-			}
-    },
-  },
-}) => {
-  return (
+const Spinner = () => {
+	return (
 		<div>
 			<svg
 				className="spinnerSVG"
@@ -48,8 +40,8 @@ const Spinner = ({
 				/>
 			</svg>
 
-			<div className="spinnerLabel">{ label }</div>
-			<div className="spinnerMessage">{ `${messages[Math.floor(Math.random() * messages.length)]}` }</div>
+			<div className="spinnerLabel">Loading</div>
+			<div className="spinnerMessage">{`${messages[Math.floor(Math.random() * messages.length)]}`}</div>
 		</div>
 	);
 }
@@ -61,7 +53,6 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const hocChain = compose(
-	injectIntl,
 	connect(mapStateToProps, mapDispatchToProps)
 );
 

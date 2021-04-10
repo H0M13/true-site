@@ -4,7 +4,6 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 import ImageSelector from "../../components/ImageSelector";
 import { Card, Button, Space, Typography } from "antd";
-import { injectIntl } from "react-intl";
 import axios from "axios";
 import { getInjectedProvider, getLocalProvider, getTargetNetwork } from "../../utils/duck";
 import { useUserProvider, useGasPrice, useContractLoader } from "../../hooks";
@@ -13,15 +12,9 @@ import { useState } from "react";
 import Transactor from "../../utils/Transactor";
 import { useHistory } from "react-router-dom";
 import Spinner from "../../components/Spinner/Spinner";
-import { UserInstructions } from "../../components/Instructions";
+import UserInstructions from "../../components/UserInstructions";
 
 const UploadView = ({
-	intl: {
-		messages: {
-			upload: { uploadTitle, submit },
-			error: { api: apiError },
-		},
-	},
 	localProvider,
 	injectedProvider,
 	targetNetwork,
@@ -66,7 +59,7 @@ const UploadView = ({
 				.catch(error => {
 					console.error(error);
 					history.push("/error", {
-						message: apiError,
+						message: 'Error connecting to the API, please check your connection.',
 					});
 				})
 				.finally(() => {
@@ -86,12 +79,11 @@ const UploadView = ({
 		<Space size='middle' wrap='true' align='center'>
 			<UserInstructions />
 			<Card
-				title={uploadTitle}
 				style={{
 					width: 400,
 				}}
 			>
-				<Typography.Title level={2}>🖼️ Upload Image</Typography.Title>
+				<Typography.Title level={2}><span role="img" aria-label="emoji artwork">🖼️</span> Upload Image</Typography.Title>
 				{loading ? (
 					<Spinner />
 				) : (
@@ -99,7 +91,7 @@ const UploadView = ({
 						<ImageSelector setFile={setFile} />
 						{file && (
 							<Button type="primary" className="submitButton" disabled={!file} onClick={() => handleSubmit()}>
-								{submit}
+								Submit
 							</Button>
 						)}
 					</Fragment>
@@ -117,6 +109,6 @@ const mapStateToProps = createStructuredSelector({
 	targetNetwork: getTargetNetwork,
 });
 
-const hocChain = compose(injectIntl, connect(mapStateToProps, mapDispatchToProps));
+const hocChain = compose(connect(mapStateToProps, mapDispatchToProps));
 
 export default hocChain(UploadView);

@@ -1,14 +1,10 @@
-import React, { useCallback, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import React, { Fragment, useCallback, useEffect } from "react";
 import "antd/dist/antd.css";
 import { Web3Provider } from "@ethersproject/providers";
 import Web3Modal from "web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import { useUserAddress } from "eth-hooks";
 import { useExchangePrice, useUserProvider } from "./hooks";
-import { IntlProvider } from 'react-intl'
-import { getLabels, validLocale } from './utils/labels'
-import { parse as UrlParse } from 'query-string'
 import { createStructuredSelector } from 'reselect';
 import { compose } from "redux";
 import { connect } from "react-redux";
@@ -17,15 +13,13 @@ import { INFURA_ID } from "./utils/constants";
 import Account from './components/Account.jsx'
 import Header from './components/Header/Header.jsx'
 import Footer from './components/Footer/Footer.jsx'
-import Menu from './views/Menu/Menu.jsx'
+import Menu from './views/Menu.jsx'
 import Routes from './views/Routes'
 
 import "./App.scss";
 
 const App = ({
 	targetNetwork,
-	locale,
-	setLocale,
 	injectedProvider,
 	setInjectedProvider,
 	localProvider,
@@ -47,17 +41,8 @@ const App = ({
 		}
 	}, [loadWeb3Modal]);
 
-
-	let location = useLocation();
-
-	useEffect(() => {
-		const params = UrlParse(location.search);
-		validLocale(params.locale) && setLocale(params.locale);
-	}, []);
-
 	return (
-
-		<IntlProvider messages={getLabels(locale)} locale={locale} defaultLocale="en-GB">
+		<Fragment>
 			<div className="App">
 				<Header />
 				<Menu />
@@ -99,7 +84,7 @@ const App = ({
 					<stop offset="100%" stopColor="#112266" />
 				</linearGradient>
 			</svg>
-		</IntlProvider>
+		</Fragment>
 	);
 }
 

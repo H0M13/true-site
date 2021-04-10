@@ -1,19 +1,11 @@
 import React, { useState } from "react";
 import { Upload, Button, Space, Image } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
-import { injectIntl } from 'react-intl'
 import { createStructuredSelector } from 'reselect';
 import { compose } from "redux";
 import { connect } from "react-redux";
 
 const ImageSelector = ({
-	intl: {
-		messages: {
-			upload: {
-				uploadSelect,
-			}
-		}
-	},
 	setFile: setParentFile
 }) => {
 	const [fileList, setFileList] = useState([]);
@@ -63,7 +55,7 @@ const ImageSelector = ({
 			<Upload
 				{...props}
 			>
-				{fileList.length === 0 && <Button icon={<UploadOutlined />}>{uploadSelect}</Button>}
+				{fileList.length === 0 && <Button icon={<UploadOutlined />}>Select Image (Max: 1)</Button>}
 			</Upload>
 		</Space>
 	);
@@ -73,7 +65,6 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const hocChain = compose(
-	injectIntl,
 	connect(mapStateToProps),
 );
 

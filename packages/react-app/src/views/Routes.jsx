@@ -1,12 +1,12 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 
-import Gallery from "./Gallery/Gallery.jsx";
+import Gallery from "./Gallery.jsx";
 import Upload from "./Upload/Upload.jsx";
-import ErrorPage from "./Error/Error.jsx";
+import ErrorPage from "./Error.jsx";
 
 const Routes = () => {
-  return (
+	return (
 		<Switch>
 			<Route path="/" component={Gallery} exact />
 			<Route path="/upload" component={Upload} exact />
