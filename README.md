@@ -43,3 +43,11 @@ yarn deploy
 ```
 
 and be sure to fund it with testnet LINK so it can make moderation requests!
+
+## Manually decoding bytes32 IPFS hashes
+
+Run `node .\bytes32ToIpfsHashConverter.js {your_bytes32_content}` to get the original IPFS content hash for the moderation labels.
+
+You can go to https://gateway.ipfs.io/ipfs/{your_ipfs_content_hash} to see the reported labels in your browser.
+
+See https://gateway.ipfs.io/ipfs/QmeD98VHCC4jGXanSmfSXNdB6ot8zAMghAUDGcqxNhUh92 for an example.
