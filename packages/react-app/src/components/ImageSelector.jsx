@@ -55,7 +55,7 @@ const ImageSelector = ({
 			<Upload
 				{...props}
 			>
-				{fileList.length === 0 && <Button icon={<UploadOutlined />}>Select Image (Max: 1)</Button>}
+				{fileList.length === 0 && <Button disabled={true} icon={<UploadOutlined />}><s>Select Image (Max: 1)</s></Button>}
 			</Upload>
 		</Space>
 	);

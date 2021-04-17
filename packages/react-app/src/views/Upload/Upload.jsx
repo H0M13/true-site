@@ -90,12 +90,21 @@ const UploadView = ({
 					<Fragment>
 						<ImageSelector setFile={setFile} />
 						{file && (
-							<Button type="primary" className="submitButton" disabled={!file} onClick={() => handleSubmit()}>
+							<Button 
+								type="primary" 
+								className="submitButton" 
+								// disabled={!file}
+								disabled={true} 
+								onClick={() => handleSubmit()}
+							>
 								Submit
 							</Button>
 						)}
 					</Fragment>
 				)}
+				<div className="archived">
+					TrueSight is currently archived and is not accepting new uploads. You can see the project in action at our <a href="https://devpost.com/software/truesight">Hackathon Devpost</a>
+				</div>
 			</Card>
 		</Space>
 	);
